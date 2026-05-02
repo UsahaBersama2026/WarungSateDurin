@@ -1,0 +1,1182 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Durin Sate | Bandung</title>
+  <meta name="description" content="Durin Sate Bandung. Pesan sate ayam, kambing, sapi via WhatsApp atau GoFood. Lokasi Sukasari, Bandung." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg0:#070709;
+      --bg1:#0b0b0f;
+      --bg2:#101018;
+      --card:rgba(255,255,255,.055);
+      --card2:rgba(18,18,24,.62);
+      --text:rgba(255,255,255,.94);
+      --muted:rgba(255,255,255,.70);
+      --muted2:rgba(255,255,255,.52);
+      --line:rgba(255,255,255,.11);
+      --line2:rgba(255,255,255,.16);
+      --orange:#f28c1b;
+      --orange2:#ff9f2f;
+      --shadow: 0 18px 60px rgba(0,0,0,.55);
+      --shadow2: 0 12px 36px rgba(0,0,0,.42);
+      --r:18px;
+      --r2:24px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,Segoe UI,Arial,sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(1200px 700px at 10% -10%, rgba(242,140,27,.22), transparent 58%),
+        radial-gradient(900px 600px at 90% 10%, rgba(255,159,47,.12), transparent 55%),
+        radial-gradient(900px 600px at 65% 110%, rgba(242,140,27,.10), transparent 55%),
+        linear-gradient(180deg, var(--bg0), var(--bg2));
+      overflow-x:hidden;
+    }
+
+    a{color:inherit; text-decoration:none}
+    .container{width:min(1180px, calc(100% - 40px)); margin:0 auto}
+    .muted{color:var(--muted)}
+    .subtle{color:var(--muted2); font-size:13.5px; line-height:1.65}
+
+    /* top progress */
+    .progress{
+      position:fixed; top:0; left:0; right:0;
+      height:2px;
+      background:rgba(255,255,255,.08);
+      z-index:70;
+    }
+    .progress > i{
+      display:block; height:100%;
+      width:0%;
+      background: linear-gradient(90deg, var(--orange), var(--orange2));
+      box-shadow: 0 0 24px rgba(242,140,27,.45);
+    }
+
+    /* noise */
+    .noise{
+      position:fixed; inset:0;
+      pointer-events:none; z-index:-1;
+      opacity:.06;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.7' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='.22'/%3E%3C/svg%3E");
+      mix-blend-mode:overlay;
+    }
+
+    /* header */
+    header{
+      position:sticky; top:0; z-index:60;
+      backdrop-filter: blur(14px);
+      background: linear-gradient(180deg, rgba(8,8,10,.88), rgba(8,8,10,.58));
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .hwrap{
+      display:flex; align-items:center; gap:18px;
+      padding:14px 0;
+    }
+    .brand{
+      display:flex; align-items:center; gap:12px;
+      min-width: 160px;
+    }
+    .brand img{
+      height:34px; width:auto; display:block;
+      filter: drop-shadow(0 10px 20px rgba(0,0,0,.35));
+    }
+    nav{display:flex; gap:18px}
+    nav a{
+      font-weight:800; font-size:14px;
+      color:rgba(255,255,255,.70);
+      padding:10px 12px;
+      border-radius:14px;
+      transition: background .2s ease, color .2s ease, transform .2s ease;
+    }
+    nav a:hover{
+      color:rgba(255,255,255,.92);
+      background:rgba(255,255,255,.06);
+      transform: translateY(-1px);
+    }
+    .hcta{margin-left:auto; display:flex; gap:10px}
+
+    /* buttons */
+    .btn{
+      position:relative;
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:10px 14px;
+      border-radius:16px;
+      font-weight:900;
+      letter-spacing:.2px;
+      border:1px solid transparent;
+      transition: transform .18s ease, box-shadow .22s ease, background .2s ease, border-color .2s ease;
+      user-select:none;
+      white-space:nowrap;
+      overflow:hidden;
+    }
+    .btn:hover{transform: translateY(-1px)}
+    .btn:active{transform: translateY(0)}
+    .btn::after{
+      content:"";
+      position:absolute; inset:-40% -30%;
+      background: linear-gradient(110deg, transparent 35%, rgba(255,255,255,.26) 45%, transparent 55%);
+      transform: translateX(-60%);
+      transition: transform .55s ease;
+      pointer-events:none;
+    }
+    .btn:hover::after{transform: translateX(40%)}
+
+    .primary{
+      background: linear-gradient(180deg, var(--orange2), var(--orange));
+      color:#140a00;
+      box-shadow: 0 18px 42px rgba(242,140,27,.24);
+    }
+    .primary:hover{box-shadow: 0 22px 60px rgba(242,140,27,.30)}
+    .ghost{
+      background: rgba(255,255,255,.05);
+      border-color: rgba(255,255,255,.14);
+      color: rgba(255,255,255,.92);
+    }
+    .ghost:hover{background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.18)}
+    .lg{padding:12px 16px; border-radius:18px}
+    .xl{padding:14px 18px; border-radius:20px}
+    .full{width:100%}
+
+    /* mobile nav */
+    .toggle{
+      display:none;
+      width:46px; height:46px;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.05);
+      cursor:pointer;
+      margin-left:auto;
+    }
+    .toggle span{display:block; height:2px; background:rgba(255,255,255,.86); margin:6px 12px}
+    .mnav{
+      display:none;
+      border-top:1px solid rgba(255,255,255,.08);
+      padding:14px 20px 18px;
+    }
+    .mnav a{
+      display:block;
+      padding:12px 0;
+      font-weight:900;
+      color:rgba(255,255,255,.72);
+    }
+    .mnav.open{display:block}
+    .mnav .mcta{display:flex; gap:10px; margin-top:10px; flex-wrap:wrap}
+
+    /* hero */
+    .hero{
+      position:relative;
+      padding:64px 0 26px;
+    }
+    .heroMedia{
+      position:absolute; inset:0; z-index:-1;
+      overflow:hidden;
+    }
+    .heroMedia img{
+      width:100%; height:100%;
+      object-fit:cover;
+      transform: scale(1.06);
+      filter: saturate(1.04) contrast(1.05);
+      will-change: transform;
+    }
+    .overlay{
+      position:absolute; inset:0;
+      background:
+        radial-gradient(800px 520px at 22% 18%, rgba(242,140,27,.26), transparent 60%),
+        radial-gradient(900px 520px at 76% 12%, rgba(255,159,47,.12), transparent 60%),
+        linear-gradient(180deg, rgba(0,0,0,.68), rgba(0,0,0,.82));
+      animation: overlayShift 8s ease-in-out infinite alternate;
+    }
+    @keyframes overlayShift{
+      from{filter:hue-rotate(0deg)}
+      to{filter:hue-rotate(-6deg)}
+    }
+    .glows{
+      position:absolute; inset:0;
+      pointer-events:none;
+    }
+    .glows i{
+      position:absolute;
+      width:420px; height:420px;
+      border-radius:50%;
+      filter: blur(24px);
+      opacity:.70;
+      background: radial-gradient(circle at 40% 35%, rgba(242,140,27,.35), transparent 60%);
+      animation: floatGlow 10s ease-in-out infinite;
+    }
+    .glows i:nth-child(1){left:-120px; top:-140px}
+    .glows i:nth-child(2){
+      right:-160px; top:-120px;
+      width:520px; height:520px;
+      opacity:.55;
+      background: radial-gradient(circle at 40% 35%, rgba(255,159,47,.26), transparent 62%);
+      animation-duration: 12s;
+    }
+    .glows i:nth-child(3){
+      left:20%; bottom:-240px;
+      width:560px; height:560px;
+      opacity:.42;
+      animation-duration: 14s;
+    }
+    @keyframes floatGlow{
+      0%{transform: translate(0,0) scale(1)}
+      50%{transform: translate(18px, 10px) scale(1.03)}
+      100%{transform: translate(-6px, 12px) scale(1.01)}
+    }
+
+    .heroGrid{
+      display:grid;
+      grid-template-columns: 1.35fr .85fr;
+      gap:18px;
+      align-items:start;
+    }
+
+    .card{
+      background: rgba(18,18,24,.58);
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: var(--r2);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+      overflow:hidden;
+      position:relative;
+    }
+    .card::before{
+      content:"";
+      position:absolute; inset:0;
+      background: radial-gradient(700px 220px at 26% 0%, rgba(242,140,27,.22), transparent 62%);
+      pointer-events:none;
+    }
+
+    .heroMain{padding:28px}
+    .kicker{
+      font-size:12px;
+      font-weight:900;
+      letter-spacing:.65px;
+      text-transform:uppercase;
+      color: rgba(255,255,255,.78);
+    }
+    h1{
+      margin:10px 0 8px;
+      font-size:46px;
+      line-height:1.02;
+      letter-spacing:-.8px;
+    }
+    .lead{margin:0 0 18px; color:var(--muted); font-size:16px; line-height:1.7}
+
+    .statusLine{
+      margin-top:10px;
+      display:flex; align-items:center; gap:10px;
+      color: rgba(255,255,255,.70);
+      font-weight:800; font-size:13px;
+    }
+    .dot{
+      width:8px; height:8px; border-radius:50%;
+      background: rgba(255,255,255,.30);
+      box-shadow: 0 0 0 0 rgba(242,140,27,.0);
+    }
+    .dot.live{
+      background: var(--orange);
+      box-shadow: 0 0 0 6px rgba(242,140,27,.16);
+      animation: pulse 1.8s ease-in-out infinite;
+    }
+    @keyframes pulse{
+      0%,100%{transform: scale(1)}
+      50%{transform: scale(1.12)}
+    }
+
+    .actions{display:flex; gap:12px; flex-wrap:wrap; margin:18px 0}
+    .quick{
+      display:grid; grid-template-columns: 1fr 1fr;
+      gap:12px;
+    }
+    .mini{
+      padding:12px 12px;
+      border-radius:18px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      box-shadow: 0 10px 24px rgba(0,0,0,.22);
+    }
+    .mlab{
+      font-size:12px; font-weight:900;
+      text-transform:uppercase; letter-spacing:.4px;
+      color: var(--muted2);
+    }
+    .mval{
+      margin-top:6px;
+      font-weight:900;
+      font-size:14px;
+      color: rgba(255,255,255,.90);
+      line-height:1.35;
+    }
+    #heroAddress{
+      display:-webkit-box;
+      -webkit-line-clamp:2;
+      -webkit-box-orient:vertical;
+      overflow:hidden;
+    }
+
+    .heroSide{display:grid; gap:14px}
+    .panel{padding:16px; border-radius: var(--r2); border:1px solid rgba(255,255,255,.14); background: rgba(18,18,24,.55); box-shadow: var(--shadow2); backdrop-filter: blur(10px)}
+    .ptitle{font-weight:900}
+    .pbody{margin-top:10px; color: var(--muted)}
+    .packs .row{
+      display:flex; align-items:center; justify-content:space-between; gap:10px;
+      padding:10px 0;
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .packs .row:last-child{border-bottom:0}
+    .packs .q{font-weight:900; color: rgba(255,255,255,.92)}
+    .packs .p{font-weight:900; color: rgba(242,140,27,.96)}
+
+    .divider{
+      height:50px;
+      background: linear-gradient(180deg, rgba(0,0,0,0), rgba(7,7,9,1));
+      margin-top:28px;
+    }
+
+    /* sections */
+    section{padding:56px 0}
+    .alt{
+      background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,0));
+      border-top:1px solid rgba(255,255,255,.07);
+      border-bottom:1px solid rgba(255,255,255,.07);
+    }
+    .shead h2{margin:0; font-size:28px; letter-spacing:-.2px}
+    .shead p{margin:10px 0 0}
+
+    /* metrics */
+    .metrics{
+      margin-top:20px;
+      display:grid;
+      grid-template-columns: repeat(4,1fr);
+      gap:14px;
+    }
+    .metric{
+      border-radius: var(--r2);
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      padding:16px;
+      box-shadow: 0 12px 30px rgba(0,0,0,.30);
+      position:relative;
+      overflow:hidden;
+    }
+    .metric::after{
+      content:"";
+      position:absolute; right:-50px; bottom:-50px;
+      width:160px; height:160px;
+      background: radial-gradient(circle at 30% 30%, rgba(242,140,27,.26), transparent 65%);
+      filter: blur(0px);
+    }
+    .metric .val{font-size:22px; font-weight:950}
+    .metric .lab{margin-top:8px; font-weight:900; font-size:13px; color: var(--muted)}
+    .metric .note{margin-top:6px; font-size:12.5px; color: var(--muted2); line-height:1.5}
+
+    /* story */
+    .storyGrid{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap:16px;
+      align-items:start;
+    }
+    .storyBody{margin-top:10px; color:var(--muted); line-height:1.85}
+    .storyCard{
+      padding:18px;
+      border-radius: var(--r2);
+      border:1px solid rgba(255,255,255,.12);
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.03));
+      box-shadow: var(--shadow2);
+    }
+    .storyCard h3{margin:0; font-size:16px; letter-spacing:-.1px}
+    .ticks{margin:12px 0 0; padding-left:18px; color:var(--muted); line-height:1.8}
+    .storyCTA{display:flex; gap:10px; margin-top:16px; flex-wrap:wrap}
+
+    /* menu */
+    .tabs{margin-top:18px; display:flex; gap:10px; flex-wrap:wrap}
+    .tab{
+      padding:10px 12px;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.05);
+      color: rgba(255,255,255,.92);
+      font-weight:950;
+      cursor:pointer;
+      transition: transform .18s ease, background .2s ease, border-color .2s ease;
+    }
+    .tab:hover{transform: translateY(-1px)}
+    .tab.active{
+      background: linear-gradient(180deg, rgba(242,140,27,.24), rgba(255,255,255,.05));
+      border-color: rgba(242,140,27,.42);
+    }
+
+    .menuGrid{
+      margin-top:16px;
+      display:grid;
+      grid-template-columns: 1.25fr .75fr;
+      gap:16px;
+      align-items:start;
+    }
+    .table{
+      border-radius: var(--r2);
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(18,18,24,.52);
+      overflow:hidden;
+      box-shadow: var(--shadow2);
+    }
+    .thead,.trow{
+      display:grid;
+      grid-template-columns: 1.2fr .45fr .45fr;
+      gap:12px;
+      padding:14px 16px;
+    }
+    .thead{
+      background: rgba(255,255,255,.06);
+      border-bottom:1px solid rgba(255,255,255,.10);
+      font-weight:950;
+      color: rgba(255,255,255,.86);
+    }
+    .trow{
+      border-bottom:1px solid rgba(255,255,255,.08);
+      align-items:start;
+    }
+    .trow:last-child{border-bottom:0}
+    .item{font-weight:950}
+    .qty{color: var(--muted)}
+    .price{font-weight:950; color: rgba(242,140,27,.96)}
+    .note{margin-top:6px}
+
+    .orderCard{
+      position:sticky; top:92px;
+      padding:18px;
+      border-radius: var(--r2);
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      box-shadow: var(--shadow2);
+    }
+    .orderCard h3{margin:0; font-size:16px}
+    .orderCard p{margin:10px 0 14px}
+    .stack{display:grid; gap:10px}
+
+    /* gallery */
+    .masonry{
+      margin-top:18px;
+      columns: 3 260px;
+      column-gap: 14px;
+    }
+    .g{
+      break-inside: avoid;
+      margin-bottom: 14px;
+      border-radius: var(--r2);
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.03);
+      box-shadow: 0 16px 44px rgba(0,0,0,.38);
+      cursor:pointer;
+      transform: translateZ(0);
+    }
+    .g img{width:100%; height:auto; display:block; transition: transform .35s ease, filter .35s ease}
+    .g:hover img{transform: scale(1.03); filter: saturate(1.05) contrast(1.04)}
+    .cap{padding:10px 12px; color: var(--muted); font-size:13px}
+
+    .lightbox{
+      position:fixed; inset:0; z-index:90;
+      display:none;
+      background: rgba(0,0,0,.76);
+      backdrop-filter: blur(10px);
+      padding:22px;
+    }
+    .lightbox.show{display:grid; place-items:center}
+    .lb{
+      width:min(980px, 100%);
+      border-radius: calc(var(--r2) + 6px);
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.16);
+      background: rgba(18,18,24,.92);
+      box-shadow: var(--shadow);
+      position:relative;
+    }
+    .lb img{width:100%; height:auto; display:block}
+    .lb .lcap{padding:12px 14px; color:var(--muted)}
+    .x{
+      position:absolute; right:10px; top:10px;
+      width:44px; height:44px;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.16);
+      background: rgba(0,0,0,.35);
+      color: rgba(255,255,255,.92);
+      font-size:22px;
+      cursor:pointer;
+    }
+
+    /* location */
+    .locGrid{
+      margin-top:18px;
+      display:grid;
+      grid-template-columns: .95fr 1.05fr;
+      gap:16px;
+      align-items:stretch;
+    }
+    .locCard,.map{
+      border-radius: var(--r2);
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      box-shadow: var(--shadow2);
+      overflow:hidden;
+    }
+    .locCard{padding:18px}
+    .lrow{
+      display:grid;
+      grid-template-columns: 110px 1fr;
+      gap:12px;
+      padding:10px 0;
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .lrow:last-child{border-bottom:0}
+    .llab{
+      color: var(--muted2);
+      font-weight:950;
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:.4px;
+    }
+    .lval{color: var(--muted); line-height:1.65}
+    .lcta{display:flex; gap:10px; margin-top:14px; flex-wrap:wrap}
+    iframe{width:100%; height:100%; min-height:360px; border:0; display:block}
+
+    /* bottom CTA */
+    .ctaBand{
+      padding:44px 0;
+      border-top:1px solid rgba(255,255,255,.07);
+      background:
+        radial-gradient(1000px 340px at 20% 30%, rgba(242,140,27,.22), transparent 60%),
+        linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,0));
+    }
+    .ctaInner{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:16px; flex-wrap:wrap;
+    }
+    .ctaInner h2{margin:0}
+    .ctaActions{display:flex; gap:10px; flex-wrap:wrap}
+
+    /* footer */
+    footer{
+      padding:28px 0 40px;
+      border-top:1px solid rgba(255,255,255,.08);
+      background: rgba(0,0,0,.18);
+    }
+    .fwrap{
+      display:flex; align-items:flex-start; justify-content:space-between;
+      gap:16px; flex-wrap:wrap;
+    }
+    .fbrand img{height:30px; width:auto; display:block; margin-bottom:10px}
+
+    /* reveal + stagger */
+    .reveal{
+      opacity:0;
+      transform: translateY(14px);
+      transition: opacity .7s ease, transform .7s ease;
+      transition-delay: var(--d, 0ms);
+      will-change: opacity, transform;
+    }
+    .reveal.show{
+      opacity:1;
+      transform: translateY(0);
+    }
+
+    /* responsive */
+    @media (max-width: 980px){
+      .heroGrid{grid-template-columns:1fr}
+      .metrics{grid-template-columns: repeat(2,1fr)}
+      .storyGrid{grid-template-columns:1fr}
+      .menuGrid{grid-template-columns:1fr}
+      .orderCard{position:relative; top:auto}
+      .locGrid{grid-template-columns:1fr}
+      h1{font-size:40px}
+    }
+    @media (max-width: 780px){
+      nav,.hcta{display:none}
+      .toggle{display:inline-block}
+      .masonry{columns:2 220px}
+      .quick{grid-template-columns:1fr}
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      *{animation:none !important; transition:none !important}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="progress" aria-hidden="true"><i id="prog"></i></div>
+  <div class="noise" aria-hidden="true"></div>
+
+  <header>
+    <div class="container hwrap">
+      <a class="brand" href="#top" aria-label="Durin Sate">
+        <img id="brandLogo" src="./logo-durin.png" alt="Durin Sate"
+             onerror="this.onerror=null;this.src='logo.jpg';" />
+      </a>
+
+      <nav aria-label="Navigasi">
+        <a href="#menu">Menu</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#story">Story</a>
+        <a href="#lokasi">Lokasi</a>
+      </nav>
+
+      <div class="hcta">
+        <a class="btn ghost" id="goTop" target="_blank" rel="noopener">GoFood</a>
+        <a class="btn primary" id="waTop" target="_blank" rel="noopener">Pesan via WhatsApp</a>
+      </div>
+
+      <button class="toggle" id="toggle" aria-label="Buka menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <div class="mnav" id="mnav">
+      <a href="#menu">Menu</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#story">Story</a>
+      <a href="#lokasi">Lokasi</a>
+      <div class="mcta">
+        <a class="btn ghost" id="goMobile" target="_blank" rel="noopener">GoFood</a>
+        <a class="btn primary" id="waMobile" target="_blank" rel="noopener">Pesan via WhatsApp</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="heroMedia" aria-hidden="true">
+        <img id="heroImg" src="./hero.jpg" alt="" />
+        <div class="overlay"></div>
+        <div class="glows"><i></i><i></i><i></i></div>
+      </div>
+
+      <div class="container heroGrid">
+        <div class="card heroMain reveal" style="--d:0ms">
+          <div class="kicker" id="heroKicker">Bandung • Sukasari</div>
+          <h1 id="heroTitle">Durin Sate Bandung</h1>
+          <p class="lead" id="heroSubtitle">Memuat data dari spreadsheet...</p>
+
+          <div class="statusLine">
+            <span class="dot" id="statusDot"></span>
+            <span id="statusText">Menghubungkan ke data</span>
+          </div>
+
+          <div class="actions">
+            <a class="btn primary lg" id="waHero" target="_blank" rel="noopener">Pesan via WhatsApp</a>
+            <a class="btn ghost lg" id="goHero" target="_blank" rel="noopener">Buka GoFood</a>
+          </div>
+
+          <div class="quick">
+            <div class="mini">
+              <div class="mlab">Jam</div>
+              <div class="mval" id="heroHours">16.00–23.00</div>
+            </div>
+            <div class="mini">
+              <div class="mlab">Telepon</div>
+              <a class="mval" id="heroPhone" href="#">0819-1011-4488</a>
+            </div>
+            <div class="mini">
+              <div class="mlab">Alamat</div>
+              <div class="mval" id="heroAddress">Jl. Sarimanah No.33, Bandung</div>
+            </div>
+            <div class="mini">
+              <div class="mlab">Pesanan</div>
+              <div class="mval">WA dan GoFood</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="heroSide reveal" style="--d:80ms">
+          <div class="panel">
+            <div class="ptitle">Paket cepat</div>
+            <div class="pbody packs" id="quickPacks">
+              <div class="subtle">Memuat paket...</div>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="ptitle">Catatan pemesanan</div>
+            <div class="pbody subtle">
+              Untuk jumlah besar, pesan lebih awal agar jadwal bakar dan estimasi lebih akurat.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="divider" aria-hidden="true"></div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="shead reveal" style="--d:0ms">
+          <h2>Ringkas, jelas, dan terukur</h2>
+          <p class="muted">Data ditarik langsung dari spreadsheet.</p>
+        </div>
+
+        <div class="metrics" id="metrics"></div>
+      </div>
+    </section>
+
+    <section class="alt" id="story">
+      <div class="container storyGrid">
+        <div class="reveal" style="--d:0ms">
+          <h2 id="storyTitle">Brand Story</h2>
+          <div class="storyBody" id="storyBody"></div>
+        </div>
+
+        <div class="reveal" style="--d:80ms">
+          <div class="storyCard">
+            <h3>Standar Durin Sate</h3>
+            <ul class="ticks">
+              <li>Rasa tegas, bakar matang, konsisten</li>
+              <li>Pilihan ayam, kambing, dan sapi</li>
+              <li>Paket tusuk transparan untuk makan bareng</li>
+              <li>Pemesanan cepat lewat WhatsApp dan GoFood</li>
+            </ul>
+            <div class="storyCTA">
+              <a class="btn primary" id="waStory" target="_blank" rel="noopener">Pesan sekarang</a>
+              <a class="btn ghost" href="#lokasi">Lihat lokasi</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="menu">
+      <div class="container">
+        <div class="shead reveal" style="--d:0ms">
+          <h2>Menu</h2>
+          <p class="muted">Harga mengikuti spreadsheet. Tabel di bawah akan terisi otomatis.</p>
+        </div>
+
+        <div class="tabs reveal" style="--d:80ms">
+          <button class="tab active" data-tab="Sate Ayam">Sate Ayam</button>
+          <button class="tab" data-tab="Sate Kambing & Sapi">Sate Kambing & Sapi</button>
+          <button class="tab" data-tab="Menu Lain">Menu Lain</button>
+        </div>
+
+        <div class="menuGrid">
+          <div class="table reveal" style="--d:120ms">
+            <div class="thead">
+              <div>Item</div><div>Qty</div><div>Harga</div>
+            </div>
+            <div id="menuBody"></div>
+          </div>
+
+          <aside class="orderCard reveal" style="--d:160ms">
+            <h3>Pesan</h3>
+            <p class="muted">Tulis jenis sate dan jumlah tusuk. Kami konfirmasi total dan estimasi.</p>
+            <div class="stack">
+              <a class="btn primary lg full" id="waMenu" target="_blank" rel="noopener">WhatsApp</a>
+              <a class="btn ghost lg full" id="goMenu" target="_blank" rel="noopener">GoFood</a>
+            </div>
+            <div class="subtle" style="margin-top:12px">
+              Jika data belum muncul, cek Apps Script JSONP sudah aktif dan deployment sudah versi terbaru.
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="alt" id="gallery">
+      <div class="container">
+        <div class="shead reveal" style="--d:0ms">
+          <h2>Gallery</h2>
+          <p class="muted">Klik foto untuk melihat lebih besar.</p>
+        </div>
+
+        <div class="masonry" id="galleryGrid"></div>
+      </div>
+
+      <div class="lightbox" id="lightbox" aria-hidden="true">
+        <div class="lb">
+          <button class="x" id="lbClose" aria-label="Tutup">×</button>
+          <img id="lbImg" alt="Preview" />
+          <div class="lcap" id="lbCap"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="lokasi">
+      <div class="container">
+        <div class="shead reveal" style="--d:0ms">
+          <h2>Lokasi</h2>
+          <p class="muted">Alamat, jam operasional, dan peta.</p>
+        </div>
+
+        <div class="locGrid">
+          <div class="locCard reveal" style="--d:80ms">
+            <div class="lrow">
+              <div class="llab">Alamat</div>
+              <div class="lval" id="locAddress"></div>
+            </div>
+            <div class="lrow">
+              <div class="llab">Telepon</div>
+              <div class="lval"><a id="locPhone" href="#"></a></div>
+            </div>
+            <div class="lrow">
+              <div class="llab">Jam</div>
+              <div class="lval" id="hoursList"></div>
+            </div>
+            <div class="lcta">
+              <a class="btn primary" id="mapsBtn" target="_blank" rel="noopener">Buka di Google Maps</a>
+              <a class="btn ghost" id="waLoc" target="_blank" rel="noopener">Pesan via WhatsApp</a>
+            </div>
+          </div>
+
+          <div class="map reveal" style="--d:120ms">
+            <iframe id="mapFrame" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen title="Maps Durin Sate"></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ctaBand">
+      <div class="container ctaInner reveal" style="--d:0ms">
+        <div>
+          <h2>Siap pesan Durin Sate?</h2>
+          <p class="muted">Gunakan WhatsApp untuk order cepat atau GoFood untuk praktis.</p>
+        </div>
+        <div class="ctaActions">
+          <a class="btn primary xl" id="waBottom" target="_blank" rel="noopener">Pesan via WhatsApp</a>
+          <a class="btn ghost xl" id="goBottom" target="_blank" rel="noopener">GoFood</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container fwrap">
+      <div class="fbrand">
+        <img id="footerLogo" src="./logo-durin.png" alt="Durin Sate" />
+        <div class="muted">Sate ayam, kambing, dan sapi. Bandung.</div>
+      </div>
+      <div>
+        <div id="footerAddress" class="muted"></div>
+        <div class="muted">© <span id="year"></span> Durin Sate</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Endpoint Apps Script Anda
+    const API = "https://script.google.com/macros/s/AKfycbwGszTvdRxvbmrY_Nymyy2XPmBKeV8RiecR0EO5aLMzNZmvTvqB-O8rC6LoCULaj39siQ/exec";
+
+    const $ = (q) => document.querySelector(q);
+    const $$ = (q) => document.querySelectorAll(q);
+
+    // Mobile nav
+    $("#toggle").addEventListener("click", () => $("#mnav").classList.toggle("open"));
+
+    // Scroll progress
+    const prog = $("#prog");
+    window.addEventListener("scroll", () => {
+      const h = document.documentElement;
+      const p = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
+      prog.style.width = Math.max(0, Math.min(100, p)) + "%";
+    }, { passive:true });
+
+    // Reveal
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(en => { if (en.isIntersecting) en.target.classList.add("show"); });
+    }, { threshold: 0.14 });
+    $$(".reveal").forEach(el => io.observe(el));
+
+    // Lightbox
+    const lightbox = $("#lightbox");
+    const lbImg = $("#lbImg");
+    const lbCap = $("#lbCap");
+    const closeLB = () => { lightbox.classList.remove("show"); lightbox.setAttribute("aria-hidden","true"); };
+    $("#lbClose").addEventListener("click", closeLB);
+    lightbox.addEventListener("click", (e) => { if (e.target === lightbox) closeLB(); });
+    function openLB(src, cap){
+      lbImg.src = src;
+      lbCap.textContent = cap || "";
+      lightbox.classList.add("show");
+      lightbox.setAttribute("aria-hidden","false");
+    }
+
+    // Utils
+    const rupiah = (n) => "Rp " + Number(n||0).toLocaleString("id-ID");
+    const buildMapsEmbed = (q) => `https://www.google.com/maps?q=${encodeURIComponent(q)}&output=embed`;
+    const buildMapsLink  = (q) => `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(q)}`;
+    const buildWaLink = (waIntl, text) => `https://wa.me/${waIntl}?text=${encodeURIComponent(text)}`;
+
+    // JSONP loader (menghindari CORS, aman untuk file://)
+    function loadJSONP(url, timeout=12000){
+      return new Promise((resolve, reject) => {
+        const cb = "cb_" + Math.random().toString(36).slice(2);
+        const s = document.createElement("script");
+        const cleanup = () => {
+          try { delete window[cb]; } catch(_){}
+          s.remove();
+        };
+
+        const t = setTimeout(() => {
+          cleanup();
+          reject(new Error("JSONP timeout"));
+        }, timeout);
+
+        window[cb] = (data) => {
+          clearTimeout(t);
+          cleanup();
+          resolve(data);
+        };
+
+        s.src = url + (url.includes("?") ? "&" : "?") + "callback=" + cb;
+        s.onerror = () => {
+          clearTimeout(t);
+          cleanup();
+          reject(new Error("JSONP failed"));
+        };
+        document.head.appendChild(s);
+      });
+    }
+
+    // Parallax halus hero image
+    const heroImg = $("#heroImg");
+    let targetY = 0, currentY = 0;
+    window.addEventListener("scroll", () => {
+      const y = window.scrollY || 0;
+      targetY = Math.min(40, y * 0.06);
+    }, { passive:true });
+
+    function raf(){
+      currentY += (targetY - currentY) * 0.08;
+      heroImg.style.transform = `scale(1.06) translate3d(0, ${currentY}px, 0)`;
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+
+    // Counters untuk metrics (kalau nilai numerik)
+    function animateNumber(el, to){
+      const dur = 900;
+      const start = performance.now();
+      const from = 0;
+      const tick = (now) => {
+        const t = Math.min(1, (now - start)/dur);
+        const v = Math.floor(from + (to-from)*t);
+        el.textContent = v.toLocaleString("id-ID");
+        if (t < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    }
+
+    // State indicator
+    const statusDot = $("#statusDot");
+    const statusText = $("#statusText");
+    function setStatus(mode, text){
+      statusText.textContent = text;
+      statusDot.classList.toggle("live", mode === "live");
+      statusDot.style.background = (mode === "error") ? "rgba(255,255,255,.30)" : "";
+    }
+
+    // Render
+    let menuData = [];
+    let currentCategory = "Sate Ayam";
+
+    function renderLinks(settings){
+      const waIntl = settings.wa_number_intl || "6281910114488";
+      const gofood = settings.gofood_url || "#";
+      const phone = settings.phone || "081910114488";
+      const prettyPhone = phone.replace(/(\d{4})(\d{4})(\d+)/, "$1-$2-$3");
+
+      const waText =
+        "Halo Durin Sate, saya mau pesan.\n" +
+        "Nama:\n" +
+        "Pesanan (jenis sate + jumlah tusuk):\n" +
+        "Tambahan (nasi/lontong/gule/soto):\n" +
+        "Alamat/ambil di tempat:\n" +
+        "Catatan:";
+
+      const wa = buildWaLink(waIntl, waText);
+
+      ["waTop","waHero","waMenu","waStory","waLoc","waBottom","waMobile"].forEach(id => $("#"+id).href = wa);
+      ["goTop","goHero","goMenu","goBottom","goMobile"].forEach(id => $("#"+id).href = gofood);
+
+      $("#heroPhone").href = "tel:" + phone;
+      $("#heroPhone").textContent = prettyPhone;
+      $("#locPhone").href = "tel:" + phone;
+      $("#locPhone").textContent = prettyPhone;
+    }
+
+    function renderSettings(settings){
+      // optional: kalau nanti Anda tambah key di sheet:
+      // logo_url, hero_image_url
+      const logoUrl = settings.logo_url || "./logo.png";
+      const heroUrl = settings.hero_image_url || "./hero.jpg";
+
+      $("#brandLogo").src = logoUrl;
+      $("#footerLogo").src = logoUrl;
+      $("#heroImg").src = heroUrl;
+
+      $("#heroTitle").textContent = settings.hero_title || "Durin Sate Bandung";
+      $("#heroSubtitle").textContent = settings.hero_subtitle || "";
+      $("#heroAddress").textContent = settings.address || "";
+      $("#locAddress").textContent = settings.address || "";
+      $("#footerAddress").textContent = settings.address || "";
+      $("#year").textContent = new Date().getFullYear();
+
+      const mapQuery = settings.maps_query || settings.address || "Durin Sate Bandung";
+      $("#mapFrame").src = buildMapsEmbed(mapQuery);
+      $("#mapsBtn").href = buildMapsLink(mapQuery);
+    }
+
+    function renderHours(hours){
+      if (hours && hours.length) $("#heroHours").textContent = `${hours[0].open}–${hours[0].close}`;
+      $("#hoursList").innerHTML = (hours || []).map(h =>
+        `<div class="subtle"><strong style="color:rgba(255,255,255,.88)">${h.day}</strong> — ${h.open}–${h.close}</div>`
+      ).join("");
+    }
+
+    function renderMetrics(metrics){
+      const wrap = $("#metrics");
+      wrap.innerHTML = (metrics || []).map((m, i) => `
+        <div class="metric reveal" style="--d:${i*60}ms">
+          <div class="val" data-val="${m.value ?? ""}">${m.value ?? ""}</div>
+          <div class="lab">${m.label ?? ""}</div>
+          <div class="note">${m.note ?? ""}</div>
+        </div>
+      `).join("");
+      $$("#metrics .reveal").forEach(el => io.observe(el));
+
+      // Animate numbers when shown
+      const mio = new IntersectionObserver((entries) => {
+        entries.forEach(en => {
+          if (!en.isIntersecting) return;
+          const vEl = en.target.querySelector(".val");
+          const raw = (vEl?.dataset?.val ?? "").toString().replace(/[^\d]/g,"");
+          if (raw && raw.length <= 6) animateNumber(vEl, parseInt(raw,10));
+          mio.unobserve(en.target);
+        });
+      }, { threshold: 0.55 });
+      $$("#metrics .metric").forEach(el => mio.observe(el));
+    }
+
+    function renderStory(story){
+      $("#storyTitle").textContent = story?.title || "Tentang Durin Sate";
+      const parts = String(story?.body || "").split("\n").filter(Boolean);
+      $("#storyBody").innerHTML = parts.map(p => `<p>${p}</p>`).join("");
+    }
+
+    function renderMenu(category){
+      currentCategory = category;
+      const items = menuData.filter(x => String(x.category).trim() === category);
+
+      const body = $("#menuBody");
+      if (!items.length){
+        body.innerHTML = `<div class="trow"><div class="item">Belum ada data pada kategori ini</div><div class="qty">-</div><div class="price">-</div></div>`;
+        return;
+      }
+
+      body.innerHTML = items.map((it, i) => `
+        <div class="trow reveal" style="--d:${i*18}ms">
+          <div class="item">
+            ${it.name || ""}
+            ${it.note ? `<div class="subtle note">${it.note}</div>` : ""}
+          </div>
+          <div class="qty">${Number(it.qty||0)} ${it.unit||""}</div>
+          <div class="price">${rupiah(it.price)}</div>
+        </div>
+      `).join("");
+      $$("#menuBody .reveal").forEach(el => io.observe(el));
+
+      // Quick packs
+      const packs = menuData.filter(x => String(x.category).trim() === "Sate Ayam").slice(0, 5);
+      $("#quickPacks").innerHTML = packs.length ? packs.map(p => `
+        <div class="row">
+          <div class="q">${p.qty} tusuk</div>
+          <div class="p">${rupiah(p.price)}</div>
+        </div>
+      `).join("") : `<div class="subtle">Belum ada paket di spreadsheet.</div>`;
+    }
+
+    function initTabs(){
+      $$(".tab").forEach(b => {
+        b.addEventListener("click", () => {
+          $$(".tab").forEach(x => x.classList.remove("active"));
+          b.classList.add("active");
+          renderMenu(b.dataset.tab);
+        });
+      });
+    }
+
+    function renderGallery(gallery){
+      const grid = $("#galleryGrid");
+      const arr = gallery || [];
+
+      if (!arr.length){
+        grid.innerHTML = `
+          <div class="panel" style="border-radius:24px">
+            <div class="ptitle">Gallery belum diisi</div>
+            <div class="pbody subtle">
+              Isi tab <strong>gallery</strong> di spreadsheet: kolom <strong>image_url</strong> dan <strong>caption</strong>.
+            </div>
+          </div>
+        `;
+        return;
+      }
+
+      grid.innerHTML = arr.map((g, i) => `
+        <figure class="g reveal" style="--d:${i*45}ms" data-src="${g.image_url}" data-cap="${String(g.caption||"").replaceAll('"',"&quot;")}">
+          <img src="${g.image_url}" alt="${g.caption || "Durin Sate"}" loading="lazy" />
+          ${g.caption ? `<figcaption class="cap">${g.caption}</figcaption>` : ""}
+        </figure>
+      `).join("");
+
+      $$("#galleryGrid .g").forEach(el => {
+        el.addEventListener("click", () => openLB(el.dataset.src, el.dataset.cap));
+      });
+      $$("#galleryGrid .reveal").forEach(el => io.observe(el));
+    }
+
+    async function main(){
+      setStatus("load", "Menghubungkan ke data");
+
+      try{
+        // Pakai JSONP supaya pasti jalan di file:// dan menghindari CORS
+        const data = await loadJSONP(API);
+
+        if (data?.ok === false) {
+          setStatus("error", data.error || "Data tidak valid");
+          $("#heroSubtitle").textContent = "Data tidak dapat diproses. Periksa struktur tab spreadsheet.";
+          return;
+        }
+
+        setStatus("live", "Data aktif dan tersinkron");
+        renderSettings(data.settings || {});
+        renderLinks(data.settings || {});
+        renderHours(data.hours || []);
+        renderMetrics(data.metrics || []);
+        renderStory(data.story || {});
+        menuData = (data.menu || []).map(m => ({...m, qty:Number(m.qty||0), price:Number(m.price||0)}));
+
+        initTabs();
+        renderMenu(currentCategory);
+        renderGallery(data.gallery || []);
+      } catch(err){
+        console.error(err);
+        setStatus("error", "Gagal memuat data");
+        $("#heroSubtitle").textContent =
+          "Tidak dapat memuat data. Pastikan Apps Script sudah support callback (JSONP) dan deployment versi terbaru.";
+        $("#quickPacks").innerHTML = `<div class="subtle">Tidak dapat memuat paket.</div>`;
+      }
+    }
+
+    main();
+  </script>
+</body>
+</html>
